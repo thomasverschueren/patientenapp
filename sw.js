@@ -1,6 +1,6 @@
 // Service worker: maakt de app offline beschikbaar.
 // Verhoog VERSIE bij elke wijziging aan de app, zodat telefoons de nieuwe versie ophalen.
-const VERSIE = "2026-11-18-1";
+const VERSIE = "2026-11-22-1";
 const CACHE = "orthopedie-" + VERSIE;
 const BESTANDEN = [
   "./",
