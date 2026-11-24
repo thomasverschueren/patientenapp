@@ -146,6 +146,7 @@ table.hv{width:100%;max-width:560px;border-collapse:collapse;margin:6px 0 4px}ta
 .vplay:focus-visible{outline:3px solid #fff;outline-offset:-6px}
 .vmeta{padding:12px 16px 14px}.vmeta b{display:block;font-size:18px}.vmeta small{color:var(--soft);font-size:15px}
 .vmeta a{font-size:14px;color:var(--pet);font-weight:700}
+.hbtns a:first-child{background:#fff;color:#17324a!important;box-shadow:none!important}
 .view{display:none}.view.on{display:block}
 .hero{background:linear-gradient(160deg,#1d4e78 0%,#17324a 55%,#0e1f2e 100%);color:#fff}
 .hero .wrap,.home .wrap{max-width:1100px}
@@ -193,7 +194,7 @@ table.hv{width:100%;max-width:560px;border-collapse:collapse;margin:6px 0 4px}ta
 <div id="o-remind"></div>
 <h1>Welkom bij de dienst Orthopedie</h1>
 <p class="welcome">Hier vindt u informatie over uw ingreep: hoe u zich voorbereidt, wat er gebeurt tijdens de opname en hoe het herstel verloopt. Kies hieronder het gewricht waarvoor u behandeld wordt.</p>
-<p class="btns" style="margin-top:16px"><a class="btn sec" style="color:#fff;box-shadow:0 0 0 2px #fff inset" href="#opvolging">Mijn opvolging</a><a class="btn sec" style="color:#fff;box-shadow:0 0 0 2px #fff inset" href="#videos">Wegwijs in het ziekenhuis</a><a class="btn sec" style="color:#fff;box-shadow:0 0 0 2px #fff inset" href="#vraag">Vraag of probleem na uw operatie?</a></p>
+<p class="btns hbtns" style="margin-top:16px"><a class="btn sec" style="color:#fff;box-shadow:0 0 0 2px #fff inset" href="#vraag">Info of vragen betreffende uw ingreep</a><a class="btn sec" style="color:#fff;box-shadow:0 0 0 2px #fff inset" href="#opvolging">Mijn opvolging</a><a class="btn sec" style="color:#fff;box-shadow:0 0 0 2px #fff inset" href="#videos">Wegwijs in het ziekenhuis</a></p>
 </div></header>
 <div class="band"><div class="wrap">
 <div class="home-grid">
@@ -205,11 +206,14 @@ table.hv{width:100%;max-width:560px;border-collapse:collapse;margin:6px 0 4px}ta
 </div>
 </div>
 </div></div>
-<div class="band vids" id="videos"><div class="wrap">
-<h2>Hoe verloopt…?</h2>
-<p class="asklead">Bekijk in korte video’s hoe uw bezoek aan de dienst Orthopedie verloopt.</p>
-<div class="vgrid" id="vgrid"></div>
-<p class="scale">De video’s worden afgespeeld via Vimeo.</p>
+<div class="band ask" id="vraag"><div class="wrap">
+<h2>Info of vragen betreffende uw ingreep</h2>
+<p class="asklead">Kies uw gewricht, uw arts en het soort probleem. U krijgt meteen het juiste advies en de snelste weg naar de dienst.</p>
+<div class="askbox">
+<ol class="steps" id="asteps"></ol>
+<div id="abody"></div>
+</div>
+<p class="scale">Dit is geen chat: uw vraag wordt tijdens de kantooruren beantwoord door het secretariaat of uw arts. Bij dringende problemen belt u.</p>
 </div></div>
 <div class="band opv" id="opvolging"><div class="wrap">
 <h2>Mijn opvolging</h2>
@@ -233,14 +237,11 @@ table.hv{width:100%;max-width:560px;border-collapse:collapse;margin:6px 0 4px}ta
 </div>
 <p class="scale">De data zijn richtdata op basis van uw infofiche: volg altijd de afspraken op uw ontslagbrief en afsprakenkaart. Uw gegevens blijven enkel op dit toestel bewaard.</p>
 </div></div>
-<div class="band ask" id="vraag"><div class="wrap">
-<h2>Vraag of probleem na uw operatie?</h2>
-<p class="asklead">Kies uw gewricht, uw arts en het soort probleem. U krijgt meteen het juiste advies en de snelste weg naar de dienst.</p>
-<div class="askbox">
-<ol class="steps" id="asteps"></ol>
-<div id="abody"></div>
-</div>
-<p class="scale">Dit is geen chat: uw vraag wordt tijdens de kantooruren beantwoord door het secretariaat of uw arts. Bij dringende problemen belt u.</p>
+<div class="band vids" id="videos"><div class="wrap">
+<h2>Hoe verloopt…?</h2>
+<p class="asklead">Bekijk in korte video’s hoe uw bezoek aan de dienst Orthopedie verloopt.</p>
+<div class="vgrid" id="vgrid"></div>
+<p class="scale">De video’s worden afgespeeld via Vimeo.</p>
 </div></div>
 </div>
 
