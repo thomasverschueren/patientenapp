@@ -140,7 +140,7 @@ table.hv{width:100%;max-width:560px;border-collapse:collapse;margin:6px 0 4px}ta
 .vcard{background:var(--bg);border:1px solid var(--line);border-radius:16px;overflow:hidden}
 .vbox{position:relative;aspect-ratio:16/9;background:var(--pet)}
 .vbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.vplay{position:absolute;inset:0;width:100%;height:100%;border:0;cursor:pointer;color:#fff;font:inherit;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.14),transparent 60%),var(--pet)}
+.vplay{position:absolute;inset:0;width:100%;height:100%;border:0;cursor:pointer;color:#fff;text-decoration:none;font:inherit;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.14),transparent 60%),var(--pet)}
 .vplay span.pb{width:64px;height:64px;border-radius:50%;background:var(--acc);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.25)}
 .vplay:hover span.pb,.vplay:focus-visible span.pb{transform:scale(1.08)}
 .vplay:focus-visible{outline:3px solid #fff;outline-offset:-6px}
@@ -241,7 +241,7 @@ table.hv{width:100%;max-width:560px;border-collapse:collapse;margin:6px 0 4px}ta
 <h2>Hoe verloopt…?</h2>
 <p class="asklead">Bekijk in korte video’s hoe uw bezoek aan de dienst Orthopedie verloopt.</p>
 <div class="vgrid" id="vgrid"></div>
-<p class="scale">De video’s worden afgespeeld via Vimeo.</p>
+<p class="scale">De video’s openen op de website van Vimeo.</p>
 </div></div>
 </div>
 
@@ -1465,7 +1465,7 @@ $("o-ing").value=O.ing;$("o-op").value=O.op;
 function renderO(){ICS.length=0;
 const it=allItems.find(i=>i.id===O.ing);let h="";
 if(it&&O.op){const op=pd(O.op),ms=MS[O.ing]||[];
-const ms2=[...ms];ms.forEach(m=>{if(/huisarts/i.test(m[2])&&!m[1]&&m[0]>=7){ms2.push([m[0]-3,0,"Maak een afspraak bij uw huisarts","Voor de wondcontrole op "+fmt(add(op,m[0]))+" ("+m[0]+" dagen na de operatie)."])}});
+const ms2=[...ms];ms.forEach(m=>{if(/huisarts/i.test(m[2])&&!m[1]&&m[0]>=8){ms2.push([m[0]-7,0,"Maak een afspraak bij uw huisarts","Voor de wondcontrole op "+fmt(add(op,m[0]))+" ("+m[0]+" dagen na de operatie)."])}});
 const rows=ms2.map(m=>({d:add(op,m[0]),e:m[1]?add(op,m[1]):null,t:m[2],n:m[3]})).sort((a,b)=>a.d-b.d);
 const nx=rows.find(r=>(r.e||r.d)>=today());
 h=`<h3>Belangrijke momenten na uw ${it.n.toLowerCase()}</h3>`+(rows.length?`<ul class="ms">${rows.map(r=>{const k=ICS.push([r.t+" ("+it.n+")",r.d,"",r.n+"\nRichtdatum volgens de infofiche van de dienst Orthopedie.",""])-1;return `<li class="${(r.e||r.d)<today()?"past":r===nx?"next":""}"><span class="dt">${fmt(r.d)}${r.e?" – "+fmt(r.e):""}</span><span><b>${r.t}</b><small>${r.n?r.n+" ":""}${rel(r.d)}</small>${calLinks(k,r.t+" ("+it.n+")",r.d,"",r.n,"")}</span></li>`}).join("")}</ul>`:`<p>Voor deze ingreep staan er nog geen vaste momenten in de fiche. Voeg uw afspraken hieronder toe.</p>`)+`<p><a href="#${it.id}">Bekijk de infofiche ›</a></p>`}
@@ -1474,7 +1474,7 @@ $("o-ms").innerHTML=h;
 const ap=[...O.ap].sort((a,b)=>(a.d+(a.t||"")).localeCompare(b.d+(b.t||"")));
 $("o-list").innerHTML=ap.length?ap.map(a=>{const d=pd(a.d);const k=ICS.push([a.type,d,a.t,"Dienst Orthopedie – Jan Yperman Ziekenhuis\nTel. 057 35 73 70",a.pl])-1;return `<li class="${d<today()?"past":""}"><span class="dt">${fmt(d)}${a.t?" · "+a.t:""}</span><span><b>${esc(a.type)}</b><small>${a.pl?esc(a.pl)+" · ":""}${rel(d)}</small>${calLinks(k,a.type,d,a.t,"Dienst Orthopedie – Jan Yperman Ziekenhuis\nTel. 057 35 73 70",a.pl)}<span class="cal"><button type="button" data-del="${a.id}">Verwijderen</button></span></span></li>`}).join(""):'<li style="display:block;color:var(--soft)">Nog geen afspraken toegevoegd.</li>';
 // reminder banner
-const up=[...ap.map(a=>({d:pd(a.d),t:a.type+(a.t?" om "+a.t:"")})),...((O.ing&&O.op)?(MS[O.ing]||[]).flatMap(m=>{const op=pd(O.op),r=[{d:add(op,m[0]),t:m[2]}];if(/huisarts/i.test(m[2])&&!m[1]&&m[0]>=7)r.push({d:add(op,m[0]-3),t:"Maak een afspraak bij uw huisarts voor de wondcontrole van "+fmt(add(op,m[0]))});return r}):[])].filter(x=>{const n=(x.d-today())/864e5;return n>=0&&n<=7}).sort((a,b)=>a.d-b.d);
+const up=[...ap.map(a=>({d:pd(a.d),t:a.type+(a.t?" om "+a.t:"")})),...((O.ing&&O.op)?(MS[O.ing]||[]).flatMap(m=>{const op=pd(O.op),r=[{d:add(op,m[0]),t:m[2]}];if(/huisarts/i.test(m[2])&&!m[1]&&m[0]>=8)r.push({d:add(op,m[0]-7),t:"Maak een afspraak bij uw huisarts voor de wondcontrole van "+fmt(add(op,m[0]))});return r}):[])].filter(x=>{const n=(x.d-today())/864e5;return n>=0&&n<=7}).sort((a,b)=>a.d-b.d);
 $("o-remind").innerHTML=up.length?`<div class="remind"><b>Herinnering</b>${up.slice(0,3).map(x=>`${x.t}: <strong>${rel(x.d)}</strong> (${fmt(x.d)})`).join("<br>")} <a href="#opvolging" style="color:var(--pet);font-weight:700">Mijn opvolging ›</a></div>`:""}
 $("o-ing").addEventListener("change",e=>{O.ing=e.target.value;save();renderO()});
 $("o-op").addEventListener("change",e=>{O.op=e.target.value;save();renderO()});
@@ -1486,7 +1486,10 @@ try{if(!standalone&&window.claude&&window.claude.use){window.claude.use("downloa
 const V=[{id:"693085384",h:"38041e36c6",n:"Consultatie",d:"Hoe een raadpleging bij de dienst Orthopedie verloopt."},
 {id:"693085596",h:"65b212bbf3",n:"Dagziekenhuis",d:"Uw opname en ingreep in het dagziekenhuis."},
 {id:"693085023",h:"c1d1b6372d",n:"C-Lounge",d:"Uw ontvangst en voorbereiding op de dag van de ingreep."}];
-$("vgrid").innerHTML=V.map(v=>`<div class="vcard"><div class="vbox"><button class="vplay" type="button" data-v="${v.id}" aria-label="Speel video ${v.n} af"><span class="pb"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span>${v.n}</button></div><div class="vmeta"><b>${v.n}</b><small>${v.d}</small><br><a href="https://vimeo.com/${v.id}/${v.h}" target="_blank" rel="noopener">Bekijk op Vimeo ›</a></div></div>`).join("");
+// INLINE=true zodra orthopediejanyperman.be is toegevoegd aan de toegelaten domeinen in Vimeo
+const INLINE=false;
+const vurl=v=>`https://vimeo.com/${v.id}/${v.h}`;
+$("vgrid").innerHTML=V.map(v=>`<div class="vcard"><div class="vbox">${INLINE?`<button class="vplay" type="button" data-v="${v.id}" aria-label="Speel video ${v.n} af">`:`<a class="vplay" href="${vurl(v)}" target="_blank" rel="noopener" aria-label="Bekijk video ${v.n} op Vimeo">`}<span class="pb"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span>${v.n}${INLINE?"</button>":"</a>"}</div><div class="vmeta"><b>${v.n}</b><small>${v.d}</small>${INLINE?`<br><a href="${vurl(v)}" target="_blank" rel="noopener">Bekijk op Vimeo ›</a>`:"<br><small>Opent op de website van Vimeo.</small>"}</div></div>`).join("");
 $("vgrid").addEventListener("click",e=>{const b=e.target.closest("[data-v]");if(!b)return;const v=V.find(x=>x.id===b.dataset.v);
 b.parentElement.innerHTML=`<iframe src="https://player.vimeo.com/video/${v.id}?h=${v.h}&autoplay=1&dnt=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${v.n}"></iframe>`});
 addEventListener("hashchange",route);route();
