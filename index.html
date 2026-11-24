@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0f4c5c">
+<meta name="theme-color" content="#17324a">
 <meta name="description" content="Patiënteninformatie van de dienst Orthopedie, Jan Yperman Ziekenhuis: voorbereiding, opname en herstel na uw ingreep.">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
@@ -22,10 +22,10 @@
    COLOUR and TYPE: wit, diep petrol, warm oranje accent; Atkinson Hyperlegible (gemaakt voor leesbaarheid)
    LAYOUT: één kolom, sticky hoofdstukbalk, tijdlijn met grote hangende labels, complicaties als rijen met balken */
 :root{color-scheme:light dark;
---bg:light-dark(#ffffff,#0b1a1f);--ink:light-dark(#10303a,#e6f0f2);--soft:light-dark(#4a6670,#9fb6bd);
---pet:light-dark(#0f4c5c,#5fb3c4);--band:light-dark(#eef5f6,#12262d);--line:light-dark(#d5e3e6,#24414a);
+--bg:light-dark(#ffffff,#0e1f2e);--ink:light-dark(#0e1f2e,#e6edf3);--soft:light-dark(#4b6075,#a3b4c3);
+--pet:light-dark(#17324a,#8fb3d1);--band:light-dark(#eef3f8,#17324a);--line:light-dark(#d6e0ea,#2c4862);
 --acc:light-dark(#d9622b,#f08a55);--bone:light-dark(#f3ead8,#d9cfbb);--boneS:light-dark(#c9b98f,#a99d7f);
---metal:light-dark(#9aa7ad,#b9c4c9);--poly:light-dark(#2f8fa6,#7fd0e0)}
+--metal:light-dark(#9aa7ad,#b9c4c9);--poly:light-dark(#2f5170,#8fb3d1)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Atkinson Hyperlegible",system-ui,sans-serif;overflow-x:clip}
@@ -33,7 +33,7 @@ html{scroll-padding-top:72px;scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 .wrap{max-width:820px;margin:0 auto}
 .band{padding:clamp(28px,4vw,56px) max(5vw,16px)}
-header.band{background:var(--pet);color:#fff;padding-bottom:28px}
+header.band{background:linear-gradient(160deg,#1d4e78 0%,#17324a 55%,#0e1f2e 100%);color:#fff;padding-bottom:28px}
 header .dept{font-size:15px;opacity:.85;margin:0 0 6px}
 h1{font-size:clamp(32px,6vw,46px);line-height:1.05;margin:0 0 12px;text-wrap:balance}
 header p.lead{margin:0;max-width:60ch;opacity:.95}
@@ -135,17 +135,28 @@ table.hv{width:100%;max-width:560px;border-collapse:collapse;margin:6px 0 4px}ta
 .remind{background:#fff;color:#10303a;border-radius:14px;padding:12px 16px;margin-bottom:16px;border-left:6px solid var(--acc)}
 .remind b{display:block}
 @media(max-width:600px){.ms li,.appts li{grid-template-columns:minmax(0,1fr)}}
+.vids{background:var(--band)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:16px;margin-top:8px}
+.vcard{background:var(--bg);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.vbox{position:relative;aspect-ratio:16/9;background:var(--pet)}
+.vbox iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vplay{position:absolute;inset:0;width:100%;height:100%;border:0;cursor:pointer;color:#fff;font:inherit;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.14),transparent 60%),var(--pet)}
+.vplay span.pb{width:64px;height:64px;border-radius:50%;background:var(--acc);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.vplay:hover span.pb,.vplay:focus-visible span.pb{transform:scale(1.08)}
+.vplay:focus-visible{outline:3px solid #fff;outline-offset:-6px}
+.vmeta{padding:12px 16px 14px}.vmeta b{display:block;font-size:18px}.vmeta small{color:var(--soft);font-size:15px}
+.vmeta a{font-size:14px;color:var(--pet);font-weight:700}
 .view{display:none}.view.on{display:block}
-.hero{background:var(--pet);color:#fff}
+.hero{background:linear-gradient(160deg,#1d4e78 0%,#17324a 55%,#0e1f2e 100%);color:#fff}
 .hero .wrap,.home .wrap{max-width:1100px}
 .hero p{max-width:60ch;opacity:.95;margin:0}
 .home-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(20px,4vw,56px);align-items:start}
 .body{position:relative;background:var(--band);border-radius:20px;padding:16px;display:flex;justify-content:center;align-items:center}
 .body svg{width:100%;max-width:520px;height:auto}.body a{cursor:pointer}
-.body .limb{stroke:light-dark(#cfe0e4,#2a4a54);stroke-linecap:round;stroke-linejoin:round;fill:none}
-.body .trunk{fill:light-dark(#cfe0e4,#2a4a54)}
+.body .limb{stroke:light-dark(#cfdbe6,#2c4862);stroke-linecap:round;stroke-linejoin:round;fill:none}
+.body .trunk{fill:light-dark(#cfdbe6,#2c4862)}
 .body a circle{fill:var(--acc);stroke:#fff;stroke-width:4;transition:r .15s}
-.body a.off circle{fill:#fff;stroke:#0f4c5c;stroke-width:3}
+.body a.off circle{fill:#fff;stroke:#17324a;stroke-width:3}
 .body a:hover circle,.body a.hl circle,.body a:focus-visible circle{r:16}
 .joints{list-style:none;margin:0;padding:0;display:grid;gap:10px}
 .joints a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;color:var(--ink);text-decoration:none;min-height:64px;background:var(--bg)}
@@ -182,7 +193,7 @@ table.hv{width:100%;max-width:560px;border-collapse:collapse;margin:6px 0 4px}ta
 <div id="o-remind"></div>
 <h1>Welkom bij de dienst Orthopedie</h1>
 <p class="welcome">Hier vindt u informatie over uw ingreep: hoe u zich voorbereidt, wat er gebeurt tijdens de opname en hoe het herstel verloopt. Kies hieronder het gewricht waarvoor u behandeld wordt.</p>
-<p class="btns" style="margin-top:16px"><a class="btn sec" style="color:#fff;box-shadow:0 0 0 2px #fff inset" href="#opvolging">Mijn opvolging</a><a class="btn sec" style="color:#fff;box-shadow:0 0 0 2px #fff inset" href="#vraag">Vraag of probleem na uw operatie?</a></p>
+<p class="btns" style="margin-top:16px"><a class="btn sec" style="color:#fff;box-shadow:0 0 0 2px #fff inset" href="#opvolging">Mijn opvolging</a><a class="btn sec" style="color:#fff;box-shadow:0 0 0 2px #fff inset" href="#videos">Wegwijs in het ziekenhuis</a><a class="btn sec" style="color:#fff;box-shadow:0 0 0 2px #fff inset" href="#vraag">Vraag of probleem na uw operatie?</a></p>
 </div></header>
 <div class="band"><div class="wrap">
 <div class="home-grid">
@@ -193,6 +204,12 @@ table.hv{width:100%;max-width:560px;border-collapse:collapse;margin:6px 0 4px}ta
 <ul class="joints" id="joints"></ul>
 </div>
 </div>
+</div></div>
+<div class="band vids" id="videos"><div class="wrap">
+<h2>Hoe verloopt…?</h2>
+<p class="asklead">Bekijk in korte video’s hoe uw bezoek aan de dienst Orthopedie verloopt.</p>
+<div class="vgrid" id="vgrid"></div>
+<p class="scale">De video’s worden afgespeeld via Vimeo.</p>
 </div></div>
 <div class="band opv" id="opvolging"><div class="wrap">
 <h2>Mijn opvolging</h2>
@@ -1464,6 +1481,13 @@ $("o-form").addEventListener("submit",e=>{e.preventDefault();if(!$("o-d").value)
 $("opvolging").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;if(b.dataset.del){O.ap=O.ap.filter(a=>a.id!==b.dataset.del);save();renderO()}else if(b.dataset.ics!==undefined){const x=ICS[+b.dataset.ics];try{ics(...x)}catch(err){}}});
 renderO();
 try{if(!standalone&&window.claude&&window.claude.use){window.claude.use("downloads").then(d=>{if(d){DL=d;renderO()}}).catch(()=>{})}}catch(e){}
+
+const V=[{id:"693085384",h:"38041e36c6",n:"Consultatie",d:"Hoe een raadpleging bij de dienst Orthopedie verloopt."},
+{id:"693085596",h:"65b212bbf3",n:"Dagziekenhuis",d:"Uw opname en ingreep in het dagziekenhuis."},
+{id:"693085023",h:"c1d1b6372d",n:"C-Lounge",d:"Uw ontvangst en voorbereiding op de dag van de ingreep."}];
+$("vgrid").innerHTML=V.map(v=>`<div class="vcard"><div class="vbox"><button class="vplay" type="button" data-v="${v.id}" aria-label="Speel video ${v.n} af"><span class="pb"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span>${v.n}</button></div><div class="vmeta"><b>${v.n}</b><small>${v.d}</small><br><a href="https://vimeo.com/${v.id}/${v.h}" target="_blank" rel="noopener">Bekijk op Vimeo ›</a></div></div>`).join("");
+$("vgrid").addEventListener("click",e=>{const b=e.target.closest("[data-v]");if(!b)return;const v=V.find(x=>x.id===b.dataset.v);
+b.parentElement.innerHTML=`<iframe src="https://player.vimeo.com/video/${v.id}?h=${v.h}&autoplay=1&dnt=1&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${v.n}"></iframe>`});
 addEventListener("hashchange",route);route();
 document.querySelectorAll(".fnav a").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();document.querySelector(a.getAttribute("href")).scrollIntoView()}));
 const cx=[
